@@ -1,0 +1,36 @@
+<div class="shopping-cart">
+  <div class="currency-header">
+    <div class="currency-selector">
+      Currency:
+    <select [(ngModel)]="shoppingCartService.currencyCode">
+      <option *ngFor="let cur of shoppingCartService.availableCurrencies$ | async | keyvalue " [ngValue]="cur.key">{{cur.key}}</option>
+    </select>
+    </div>
+  </div>
+  <div class="shopping-cart-items">
+  <ng-container *ngFor="let item of shoppingCartService.shoppingCartItems$ | async | keyvalue"
+       class="shopping-cart-item">
+    <div class="item-name" title="{{item.value.name}}">{{item.value.name}}</div>
+    <div class="item-price">{{shoppingCartService.inSelectedCurr(item.value.price) | currency:shoppingCartService.currencyCode:''}}</div>
+    <div class="item-action"><a (click)="shoppingCartService.removeFromCart(item.value.id)" class="item-remove">🗑️</a></div>
+  </ng-container>
+  </div>
+  <div class="total-price-footer">
+    <div class="total-price">Total: {{shoppingCartService.inSelectedCurr(shoppingCartService.totalPrice$ | async) | currency:shoppingCartService.currencyCode:'symbol-narrow'}}</div>
+  </div>
+</div>
+<br/>
+result$:
+<pre>{{shoppingCartService.result$ | async | json}}</pre>
+<!--
+<br/>
+availableCurrencyCodes$:
+<pre>{{ shoppingCartService.availableCurrencies$ | async | keyvalue | json }}</pre>
+<br/>
+currencyCode:
+<pre>{{shoppingCartService.currencyCode}}</pre>
+<br/>
+shoppingCartItems$:
+<pre>{{shoppingCartService.shoppingCartItems$ | async | keyvalue | json}}</pre>
+<br/>
+-->

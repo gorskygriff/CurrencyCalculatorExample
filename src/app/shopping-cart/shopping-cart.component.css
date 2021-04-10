@@ -1,0 +1,73 @@
+.shopping-cart {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  padding: 5px;
+  border: 1px solid cornflowerblue;
+  background: aliceblue;
+}
+.currency-header {
+  width: 100%;
+  text-align: right;
+}
+
+.currency-selector {
+  margin: 4px;
+}
+
+.shopping-cart-items {
+  display: grid;
+  grid-template-columns: auto 1fr 32px;
+}
+
+.total-price-footer {
+  display: grid;
+  grid-template-columns: auto 32px;
+}
+
+.total-price {
+  text-align: right;
+  padding: 4px;
+  font-weight: bolder;
+}
+
+.item-name {
+  border: 0px solid burlywood;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 4px;
+  line-height: 24px;
+}
+
+.item-price {
+  border: 0px solid greenyellow;
+  text-align: right;
+  padding: 4px;
+  line-height: 24px;
+}
+
+.item-action {
+  padding: 4px;
+}
+
+.item-name, .item-price, .item-action {
+  background: aliceblue;
+}
+
+.item-name:nth-child(2n+1), .item-price:nth-child(2n+2), .item-action:nth-child(2n+3) {
+  background: lightblue;
+}
+
+.item-remove {
+  cursor: pointer;
+  display: block;
+  text-decoration: none;
+  width: 24px;
+  height: 24px;
+  text-align: center;
+}
+
+.item-remove:hover, .item-remove:active {
+  background: cornflowerblue;
+}
